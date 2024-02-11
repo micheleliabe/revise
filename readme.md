@@ -5,7 +5,6 @@ Revise.cli is a command-line interface (CLI) tool designed to help manage and op
 
 ## Features
 - Analyze AWS resources for cost optimization and security improvements.
-- Support for AWS cloud provider.
   - Identifying unused Elastic IPs.
   - Locating security groups with inbound rules allowing traffic from 0.0.0.0/0.
   - Detecting RDS instances with public IPs (publicly accessible).
