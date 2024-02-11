@@ -15,12 +15,12 @@ Revise.cli is a command-line interface (CLI) tool designed to help manage and op
 ## Installation
 1. Clone the repository:
    ```
-   git clone https://github.com/your_username/revise-cli.git
+   git clone https://github.com/micheleliabe/revise.git
    ```
 
 2. Navigate to the project directory:
    ```
-   cd revise-cli
+   cd revise
    ```
 
 3. Install dependencies using pip:
@@ -34,7 +34,7 @@ Revise.cli is a command-line interface (CLI) tool designed to help manage and op
 ```
 ./revise.py aws costs --region us-east-1
 ```
-- Displays cost optimization recommendations for AWS resources in the specified region, such as detached EBS volumes, GP2 volumes, and unused Elastic IPs.
+- Displays cost optimization recommendations for AWS resources in the specified region.
 
 ```
 ./revise.py aws costs --region all
@@ -45,7 +45,7 @@ Revise.cli is a command-line interface (CLI) tool designed to help manage and op
 ```
 ./revise.py aws security --region us-east-1
 ```
-- Provides security recommendations for AWS resources in the specified region, including security groups with internet access and publicly accessible RDS instances.
+- Provides security recommendations for AWS resources in the specified region.
 
 ```
 ./revise.py aws security --region all
@@ -66,10 +66,3 @@ Revise.cli is a command-line interface (CLI) tool designed to help manage and op
 
 ## Contributing
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
-
-## License
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-Esse README.md reflete a situação atual do projeto, com as funcionalidades do Azure e GCP ainda em desenvolvimento. As instruções foram atualizadas para incluir a necessidade de fornecer a região ao executar os comandos para análise de recursos da AWS.
