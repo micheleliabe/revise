@@ -11,8 +11,8 @@ import pyfiglet
 
 # Import sub-modules for AWS, Azure, and GCP functionalities
 import aws.aws as aws
-import azure.azure as azure
-import gcp.gcp as gcp
+# import azure.azure as azure
+# import gcp.gcp as gcp
 
 # Initialize Rich Console for better terminal output formatting
 console = Console()
@@ -29,7 +29,7 @@ app = typer.Typer()
 # Add sub-commands for AWS, Azure, and GCP functionalities
 app.add_typer(aws.app, name="aws")
 # app.add_typer(azure.app, name="azure")
-# app.add_typer(gcp.app, name="gcp")    
+# app.add_typer(gcp.app, name="gcp")
 
 # Entry point of the script
 if __name__ == "__main__":

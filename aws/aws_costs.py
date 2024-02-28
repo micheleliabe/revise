@@ -1,10 +1,12 @@
 import boto3
 
 # Function to retrieve detached EBS volumes in a specific region
+
+
 def get_detached_ebs_volumes(region):
     # Initialize EC2 client for the specified region
     client = boto3.client('ec2', region_name=region)
-    
+
     # Describe volumes with status "available" (detached)
     response = client.describe_volumes(
         Filters=[
@@ -30,10 +32,12 @@ def get_detached_ebs_volumes(region):
     return volumes
 
 # Function to retrieve GP2 EBS volumes in a specific region
+
+
 def get_gp2_ebs_volumes(region):
     # Initialize EC2 client for the specified region
     client = boto3.client('ec2', region_name=region)
-    
+
     # Describe volumes with type "gp2"
     response = client.describe_volumes(
         Filters=[
@@ -56,10 +60,12 @@ def get_gp2_ebs_volumes(region):
     return ebs_volumes
 
 # Function to retrieve unused Elastic IPs in a specific region
+
+
 def get_unused_elastic_ips(region):
     # Initialize EC2 client for the specified region
     client = boto3.client('ec2', region_name=region)
-    
+
     # Describe Elastic IPs
     response = client.describe_addresses()
 
