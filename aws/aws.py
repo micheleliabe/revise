@@ -33,9 +33,18 @@ def costs(region: List[str] = ["all"],):
     account_detached_ebs_volumes = []
     account_gp2_ebs_volumes = []
     account_unused_elastic_ips = []
+    account_volumes_attached_on_stopped_instances = []
 
     # Iterate over each region to fetch relevant cost information
     for region in regions:
+
+        with console.status(f"Getting volumes attached on stopped instances on region {region}", spinner="aesthetic"):
+            region_volumes_attached_on_stopped_instances = aws_costs.get_volumes_attached_on_stopped_instances(
+                region)
+            if region_volumes_attached_on_stopped_instances:
+                account_volumes_attached_on_stopped_instances.extend(
+                    region_volumes_attached_on_stopped_instances)
+
         with console.status(f"Getting unused EBS volumes on region {region}...", spinner="aesthetic"):
             region_detached_ebs_volumes = aws_costs.get_detached_ebs_volumes(
                 region)
@@ -72,6 +81,12 @@ def costs(region: List[str] = ["all"],):
         recommendation_unused_elastic_ips = "Check the possibility of releasing IP addresses"
         utils.display_table(account_unused_elastic_ips,
                             title_unused_elastic_ips, recommendation_unused_elastic_ips)
+
+    if account_volumes_attached_on_stopped_instances:
+        title_volumes_on_stopped_instances = "Volumes attached on stopped instances"
+        recommendation_volumes_on_stopped_instances = "Create a snapshot of the volume as a backup, and then delete the active volume."
+        utils.display_table(account_volumes_attached_on_stopped_instances,
+                            title_volumes_on_stopped_instances, recommendation_volumes_on_stopped_instances)
 
 # Define a command to fetch security recommendations
 

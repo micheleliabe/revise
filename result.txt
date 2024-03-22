@@ -1,0 +1,54 @@
+ ____            _                _ _ 
+|  _ \ _____   _(_)___  ___   ___| (_)
+| |_) / _ \ \ / / / __|/ _ \ / __| | |
+|  _ <  __/\ V /| \__ \  __/| (__| | |
+|_| \_\___| \_/ |_|___/\___(_)___|_|_|
+                                      
+
+By - Michel Dias
+
+Detached EBS volumes                                                                    
+╭───────────┬───────────────────────┬───────────┬──────────────────┬────────────┬──────╮
+│ Region    │ VolumeId              │ State     │ AvailabilityZone │ VolumeType │ Size │
+├───────────┼───────────────────────┼───────────┼──────────────────┼────────────┼──────┤
+│ us-east-1 │ vol-0e34145a332e3beb0 │ available │ us-east-1a       │ gp3        │ 8    │
+╰───────────┴───────────────────────┴───────────┴──────────────────┴────────────┴──────╯
+
+ Recommendation: 
+  - Delete unnecessary volumes, but be cautious to do so carefully to avoid the loss of important data.
+
+
+
+
+GP2 volumes                                       
+╭───────────┬───────────────────────┬────────────╮
+│ Region    │ VolumeId              │ VolumeType │
+├───────────┼───────────────────────┼────────────┤
+│ us-east-1 │ vol-06f5ca2f949e80fc4 │ gp2        │
+├───────────┼───────────────────────┼────────────┤
+│ us-east-2 │ vol-049e44168317c358d │ gp2        │
+╰───────────┴───────────────────────┴────────────╯
+
+ Recommendation: 
+  - Evaluate the possibility of migrating volumes to gp3
+
+
+
+
+Volumes attached on stopped instances                                  
+╭───────────┬─────────────────────┬───────────┬───────────────────────╮
+│ region    │ instance            │ device    │ volume                │
+├───────────┼─────────────────────┼───────────┼───────────────────────┤
+│ us-east-1 │ i-08577c6164f2f6c2c │ /dev/sda1 │ vol-06f5ca2f949e80fc4 │
+├───────────┼─────────────────────┼───────────┼───────────────────────┤
+│ us-east-1 │ i-08577c6164f2f6c2c │ /dev/sdd  │ vol-0cbc23b8bda7cf659 │
+├───────────┼─────────────────────┼───────────┼───────────────────────┤
+│ us-east-2 │ i-0a30ae7835db53628 │ /dev/sda1 │ vol-049e44168317c358d │
+╰───────────┴─────────────────────┴───────────┴───────────────────────╯
+
+ Recommendation: 
+  - Create a snapshot of the volume as a backup, and then delete the active volume.
+
+
+
+

@@ -81,3 +81,30 @@ def get_unused_elastic_ips(region):
             })
 
     return not_used_ips
+
+
+def get_volumes_attached_on_stopped_instances(region):
+
+    try:
+        # Initialize EC2 client for the specified region
+        client = boto3.client('ec2', region_name=region)
+
+        # Describe Instances
+        response = client.describe_instances(
+            Filters=[
+                {
+                    'Name': 'instance-state-name',
+                    'Values': ['stopped']
+                }
+            ]
+        )
+        volumes = []
+        for reservation in response.get("Reservations"):
+            for instance in reservation["Instances"]:
+                for device in instance["BlockDeviceMappings"]:
+                    volumes.append({"region": region, "instance": instance["InstanceId"], "device": device["DeviceName"],
+                                    "volume": device["Ebs"]["VolumeId"]})
+        return volumes
+    except Exception as e:
+        print("Ocorreu um erro")
+        print(e)

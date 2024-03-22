@@ -52,7 +52,10 @@ def display_table(data, title, recommendation=None):
     # Print recommendation if provided
     if recommendation:
         console.print(
-            f"\n [purple]Recommendation: \n  [white]- {recommendation}")
+            f"\n [yellow]Recommendation: \n  [white]- {recommendation}")
 
     # Add a newline after printing the table
+    console.print()
+    console.print()
+    console.print()
     console.print()
