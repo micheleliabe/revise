@@ -102,8 +102,12 @@ def get_volumes_attached_on_stopped_instances(region):
         for reservation in response.get("Reservations"):
             for instance in reservation["Instances"]:
                 for device in instance["BlockDeviceMappings"]:
-                    volumes.append({"region": region, "instance": instance["InstanceId"], "device": device["DeviceName"],
-                                    "volume": device["Ebs"]["VolumeId"]})
+                    volumes.append({
+                        "region": region,
+                        "instance": instance["InstanceId"],
+                        "device": device["DeviceName"],
+                        "volume": device["Ebs"]["VolumeId"]
+                    })
         return volumes
     except Exception as e:
         print("Ocorreu um erro")

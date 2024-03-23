@@ -10,6 +10,7 @@ Revise.cli is a command-line interface (CLI) tool designed to help manage and op
   - Detecting RDS instances with public IPs (publicly accessible).
   - Finding in-use GP2 volumes.
   - Identifying detached volumes.
+  - Identifying volumes attached on stopped EC2 instances
 
 ## Installation
 1. Clone the repository:
